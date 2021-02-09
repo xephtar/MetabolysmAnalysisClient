@@ -17,14 +17,47 @@ const routes = [
   },
   {
     meta: {
-      title: 'Tables'
+      title: 'Articles'
     },
-    path: '/tables',
-    name: 'tables',
+    path: '/articles',
+    name: 'articles',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "tables" */ '../views/Tables.vue')
+    component: () => import(/* webpackChunkName: "tables" */ '../views/Articles.vue')
+  },
+  {
+    meta: {
+      title: 'Metabolities'
+    },
+    path: '/metabolities',
+    name: 'metabolities',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "tables" */ '../views/Metabolities.vue')
+  },
+  {
+    meta: {
+      title: 'Reactions'
+    },
+    path: '/reactions',
+    name: 'reactions',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "tables" */ '../views/Reactions.vue')
+  },
+  {
+    meta: {
+      title: 'Diseases'
+    },
+    path: '/diseases',
+    name: 'diseases',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "tables" */ '../views/Diseases.vue')
   },
   {
     meta: {

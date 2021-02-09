@@ -5,16 +5,16 @@
         <div class="level-left">
           <div class="level-item">
             <div class="footer-copyright">
-              <b>&copy; {{ year }}, JustBoil.me</b> &mdash; Admin One Demo
-              <span class="tag">v1.5.0</span>
+              <b>&copy; {{ year }}, ITU</b> &mdash; Pathway Finding
+              <span class="tag">v0.0.1</span>
             </div>
           </div>
         </div>
         <div class="level-right">
           <div class="level-item">
             <div class="logo">
-              <a href="https://justboil.me">
-                <img src="../assets/justboil-logo.svg" alt="JustBoil.me" />
+              <a href="https://www.itu.edu.tr/">
+                <img src="../assets/itu-logo.png" alt="ITU" />
               </a>
             </div>
           </div>
