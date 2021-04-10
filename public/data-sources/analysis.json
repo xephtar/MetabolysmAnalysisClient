@@ -1,0 +1,38 @@
+{
+  "data":[
+  {
+    "doi":"10.1080/14756366.2020.1858820",
+    "abstract":"In the present work, we report a new class of potent steroid sulphatase (STS) inhibitors based on 6-(1-phenyl-1<i>H</i>-1,2,3-triazol-4-yl)naphthalen-2-yl sulphamate derivatives.",
+    "disease":"Cancer",
+    "parameter":"Arginin Metabolism",
+    "result": "Ascending"
+  },
+  {
+    "doi":"10.1166/jnn.2021.18684",
+    "abstract":"In order to study Fe₃O₄-Polypyrrole (Fe₃O₄-PPy) core-shell nanocomposite in the diagnosis of tumor markers in the diseased gastric tissues of early cancer patients, a total of 160 cases of patients, who were confirmed as early gastric cancer by gastroscopy",
+    "disease":"Cancer",
+    "parameter":"Alanine and aspartate metabolism",
+    "result": "Descending"
+  },
+  {
+    "doi":"10.1080/14756366.2020.1862101",
+    "abstract":"The serine/threonine protein kinases CDK2 and GSK-3β are key oncotargets in breast cancer cell lines, therefore, in the present study three series of oxindole-benzofuran hybrids were designed and synthesised as dual CDK2/GSK-3β inhibitors targeting breast cancer ",
+    "disease":"Cancer",
+    "parameter":"Arginine and proline metabolism",
+    "result": "Ascending"
+  },
+  {
+    "doi":"10.1080/14756366.2020.1862100",
+    "abstract":"Mitochondrial anti-apoptotic Bcl2 and BclxL proteins, are overexpressed in multiple tumour types, and has been involved in the progression and survival of malignant cells.",
+    "disease":"Cancer",
+    "parameter":"CoA catabolism",
+    "result": "Descending"
+  },
+  {
+    "doi":"10.1042/bsr20202898",
+    "abstract":"Breast carcinoma (BRCA) is the most common carcinoma among women worldwide. Despite the great progress achieved in early detection and treatment, morbidity and mortality rates remain high.",
+    "disease":"Cancer",
+    "parameter":"Glycolysis/gluconeogenesis",
+    "result": "Descending"
+  }]
+}

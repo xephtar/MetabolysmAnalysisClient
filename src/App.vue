@@ -34,6 +34,12 @@ export default {
         'Examples',
         [
           {
+            to: '/analysis',
+            label: 'Analysis',
+            icon: 'table',
+            updateMark: true
+          },
+          {
             to: '/tables',
             label: 'Tables',
             icon: 'table',
