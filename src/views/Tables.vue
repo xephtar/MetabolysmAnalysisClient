@@ -1,34 +1,62 @@
 <template>
   <div class="hello">
-    <h2>Abstract Demo List</h2>
+    <h2>Analysis Result Page</h2>
     <hr>
-    <button type="button" class="btn btn-sm btn-outline-success" v-on:click="fetchAllData">LOAD ALL</button>
-    <button type="button" class="btn btn-sm btn-outline-success" v-on:click="fetchDataWithParam('40')">LOAD 40 YO</button>
-    <button type="button" class="btn btn-sm btn-outline-success" v-on:click="fetchDataWithParam('22')">LOAD 22 YO</button>
+    <CardComponent title="Parameters" icon="ballot">
+      <form @submit.prevent="submit">
+        <b-field>
+          <b-input
+            v-model="form.disease"
+            icon="account"
+            placeholder="Disease"
+            name="disease"
+            required
+          />
+        </b-field>
+        <b-field>
+          <b-input
+            v-model="form.pathway"
+            icon="email"
+            placeholder="Pathway"
+            name="pathway"
+          />
+        </b-field>
+        <b-field horizontal>
+          <b-field grouped>
+            <div class="control">
+              <b-button native-type="submit" type="is-primary"
+              >Search</b-button
+              >
+            </div>
+            <div class="control">
+              <b-button type="is-primary is-outlined" @click="reset"
+              >Reset</b-button
+              >
+            </div>
+          </b-field>
+        </b-field>
+    </form>
+    </CardComponent>
     <hr>
     <div class="content">
-      <h3>Human Meta - Analysis List</h3>
+      <h3>Analysis Data</h3>
       <table class="table">
         <thead>
         <tr>
-          <th>NAME</th>
-          <th>ID</th>
-          <th>DOI</th>
-          <th>ABSTRACT</th>
+          <th>Article Title</th>
+          <th>Publish Date</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="item in fetched_items" :key="item.name">
-          <td><img v-bind:src="item.img" alt="profile image" class="prof-img"> {{ item.name }}</td>
-          <td>{{ item.id }}</td>
-          <td>{{ item.doi }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ parseInt(item.pub_date) }}</td>
           <td>
-            <Highlighter class="my-highlight" :style="{ color: 'red' }"
-                           highlightClassName="highlight"
-                           :searchWords="keywords"
-                           :autoEscape="true"
-                           :textToHighlight=item.abstract_text
-            />
+            <b-button
+              label="Detail"
+              type="is-primary"
+              size="is-small"
+              @click="isComponentModalActive = true" />
           </td>
         </tr>
         </tbody>
@@ -43,39 +71,68 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Highlighter from 'vue-highlight-words'
-export default {
 
-  components: {
-    Highlighter
+import axios from 'axios'
+import CardComponent from '@/components/CardComponent'
+import mapValues from 'lodash/mapValues'
+
+export default {
+  components: { CardComponent },
+  comments: {
+    CardComponent
   },
   data () {
-    return { fetched_items: [], words: 'cancer cell CDK2', text: '' }
+    return {
+      isComponentModalActive: false,
+      fetched_items: [],
+      words: 'cancer cell CDK2',
+      text: '',
+      form: {
+        disease: '',
+        pathway: ''
+      }
+    }
   },
 
   methods: {
-    fetchDataWithParam: function (ageParam) {
-      axios.get('http://127.0.0.1:8000/api/articles/?search=' + ageParam).then(resp => {
+    submit () {
+      console.log('this.form.disease:: ', this.form.disease)
+      let searchParam = ''
+      if (this.form.pathway !== '') {
+        searchParam = this.form.disease + ' ' + this.form.pathway
+      } else {
+        searchParam = this.form.disease
+      }
+
+      axios.get('http://127.0.0.1:8000/api/articles/?search=' + searchParam).then(resp => {
         console.log('--- SUCCESS ---')
         this.fetched_items = []
         resp.data.results.forEach(x => this.fetched_items.push(x))
       }).catch(() => { console.log('--- ERROR ---') })
     },
-    fetchAllData: function () {
-      axios.get('http://127.0.0.1:8000/api/articles/?search=cancer').then(resp => {
-        console.log('--- SUCCESS ---')
-        this.fetched_items = []
-        resp.data.results.forEach(x => this.fetched_items.push(x))
-      }).catch(() => { console.log('--- ERROR ---') })
+    reset () {
+      this.form = mapValues(this.form, (item) => {
+        if (item && typeof item === 'object') {
+          return []
+        }
+        return null
+      })
+
+      this.$buefy.snackbar.open({
+        message: 'Reset successfully',
+        queue: false
+      })
+      this.fetched_items = []
     }
   },
   computed: {
     keywords () {
       return this.words.split(' ')
-    }
+    },
+    console: () => console
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -106,7 +163,7 @@ th {
   background-color: rgb(241, 241, 241);
 }
 tbody > tr:hover {
-  background-color: #42b983;
+  background-color: #f2b727;
 }
 tbody > tr {
   height: 60px;
