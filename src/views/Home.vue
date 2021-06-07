@@ -8,30 +8,35 @@
       <tiles>
         <card-widget
           class="tile is-child"
-          type="is-primary"
-          icon="account-multiple"
-          :number="512"
-          label="Clients"
+          type="is-info"
+          icon="book-open"
+          :number="this.articlesCount"
+          label="Articles"
         />
         <card-widget
           class="tile is-child"
           type="is-info"
-          icon="cart-outline"
-          :number="7770"
-          prefix="$"
-          label="Sales"
+          icon="bacteria"
+          :number="this.metabolitiesCount"
+          label="Metabolities"
         />
         <card-widget
           class="tile is-child"
-          type="is-success"
-          icon="chart-timeline-variant"
-          :number="256"
-          suffix="%"
-          label="Performance"
+          type="is-info"
+          icon="needle"
+          :number="this.diseasesCount"
+          label="Diseases"
+        />
+        <card-widget
+          class="tile is-child"
+          type="is-info"
+          icon="test-tube"
+          :number="this.reactionsCount"
+          label="Reactions"
         />
       </tiles>
-
-      <card-component
+      <b-loading :is-full-page="true" v-model="isLoading"></b-loading>
+      <!-- <card-component
         title="Performance"
         icon="finance"
         header-icon="reload"
@@ -47,13 +52,7 @@
           >
           </line-chart>
         </div>
-      </card-component>
-
-      <card-component title="Clients" class="has-table has-mobile-sort-spaced">
-        <clients-table-sample
-          :data-url="`${$router.options.base}data-sources/clients.json`"
-        />
-      </card-component>
+      </card-component> -->
     </section>
   </div>
 </template>
@@ -65,15 +64,14 @@ import TitleBar from '@/components/TitleBar'
 import HeroBar from '@/components/HeroBar'
 import Tiles from '@/components/Tiles'
 import CardWidget from '@/components/CardWidget'
-import CardComponent from '@/components/CardComponent'
-import LineChart from '@/components/Charts/LineChart'
-import ClientsTableSample from '@/components/ClientsTableSample'
+// import CardComponent from '@/components/CardComponent'
+// import LineChart from '@/components/Charts/LineChart'
+import axios from 'axios'
 export default {
   name: 'Home',
   components: {
-    ClientsTableSample,
-    LineChart,
-    CardComponent,
+    // LineChart,
+    // CardComponent,
     CardWidget,
     Tiles,
     HeroBar,
@@ -84,7 +82,16 @@ export default {
       defaultChart: {
         chartData: null,
         extraOptions: chartConfig.chartOptionsMain
-      }
+      },
+      articlesUrl: 'http://localhost:8000/api/articles/',
+      articlesCount: 0,
+      metabolitiesUrl: 'http://localhost:8000/api/metabolities/',
+      metabolitiesCount: 0,
+      diseasesUrl: 'http://localhost:8000/api/diseases/',
+      diseasesCount: 0,
+      reactionsUrl: 'http://localhost:8000/api/reactions/',
+      reactionsCount: 0,
+      isLoading: true
     }
   },
   computed: {
@@ -92,9 +99,22 @@ export default {
       return ['Admin', 'Dashboard']
     }
   },
-  mounted () {
+  async mounted () {
+    this.isLoading = true
+    await axios.get(this.articlesUrl).then((response) => {
+      this.articlesCount = response.data.count
+    })
+    await axios.get(this.metabolitiesUrl).then((response) => {
+      this.metabolitiesCount = response.data.count
+    })
+    await axios.get(this.diseasesUrl).then((response) => {
+      this.diseasesCount = response.data.count
+    })
+    await axios.get(this.reactionsUrl).then((response) => {
+      this.reactionsCount = response.data.count
+    })
+    this.isLoading = false
     this.fillChartData()
-
     this.$buefy.snackbar.open({
       message: 'Welcome back',
       queue: false
