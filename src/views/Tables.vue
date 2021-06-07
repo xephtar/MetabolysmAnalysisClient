@@ -40,27 +40,93 @@
     <hr>
     <div class="content">
       <h3>Analysis Data</h3>
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Article Title</th>
-          <th>Publish Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="item in fetched_items" :key="item.name">
-          <td>{{ item.name }}</td>
-          <td>{{ parseInt(item.pub_date) }}</td>
-          <td>
-            <b-button
-              label="Detail"
-              type="is-primary"
-              size="is-small"
-              @click="isComponentModalActive = true" />
-          </td>
-        </tr>
-        </tbody>
-      </table>
+      <section>
+        <div class="block">
+          <b-button
+            label="Disease"
+            type="is-primary"
+            size="is-medium"
+            @click="isOpen = !isOpen"
+            aria-controls="contentIdForA11y2" />
+          <b-button
+            label="Pathway"
+            type="is-primary"
+            size="is-medium"
+            @click="isOpen_2 = !isOpen_2"
+            aria-controls="contentIdForA11y3" />
+        </div>
+
+        <b-collapse
+          aria-id="contentIdForA11y2"
+          class="panel"
+          animation="slide"
+          v-model="isOpen">
+          <template #trigger>
+            <div
+              class="panel-heading"
+              role="button"
+              aria-controls="contentIdForA11y2">
+              <strong>Group by Disease</strong>
+            </div>
+          </template>
+          <div class="panel-block">
+            <DiseaseRowGrid/>
+          </div>
+        </b-collapse>
+        <b-collapse
+          aria-id="contentIdForA11y3"
+          class="panel"
+          animation="slide"
+          v-model="isOpen_2">
+          <template #trigger>
+            <div
+              class="panel-heading"
+              role="button"
+              aria-controls="contentIdForA11y3">
+              <strong>Group by Pathway</strong>
+            </div>
+          </template>
+          <div class="panel-block">
+            <PathwayRowGrid />
+          </div>
+        </b-collapse>
+      </section>
+    </div>
+    <b-modal :active.sync="isEditModalActive" has-modal-card>
+      <show-modal
+        :todo='selectedTodo'
+        @edit-todo="onEditTodo"
+      ></show-modal>
+    </b-modal>
+    <div>
+      <b-table :items="items" :fields="fields" striped responsive="sm">
+        <template #cell(show_details)="row">
+          <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+            {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
+          </b-button>
+
+          <!-- As `row.showDetails` is one-way, we call the toggleDetails function on @change -->
+          <b-form-checkbox v-model="row.detailsShowing" @change="row.toggleDetails">
+            Details via check
+          </b-form-checkbox>
+        </template>
+
+        <template #row-details="row">
+          <b-card>
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Age:</b></b-col>
+              <b-col>{{ row.item.age }}</b-col>
+            </b-row>
+
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Is Active:</b></b-col>
+              <b-col>{{ row.item.isActive }}</b-col>
+            </b-row>
+
+            <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
+          </b-card>
+        </template>
+      </b-table>
     </div>
     <div id="footer">
       <hr>
@@ -74,27 +140,38 @@
 
 import axios from 'axios'
 import CardComponent from '@/components/CardComponent'
+import ShowModal from '@/components/ShowModal'
 import mapValues from 'lodash/mapValues'
+import DiseaseRowGrid from '@/components/DiseaseRowGrid'
+import PathwayRowGrid from '@/components/PathwayRowGrid'
 
 export default {
-  components: { CardComponent },
+  components: { PathwayRowGrid, DiseaseRowGrid, CardComponent, ShowModal },
   comments: {
     CardComponent
   },
   data () {
     return {
-      isComponentModalActive: false,
+      isOpen: true,
+      isOpen_2: false,
+      isEditModalActive: false,
       fetched_items: [],
-      words: 'cancer cell CDK2',
+      words: '',
       text: '',
       form: {
         disease: '',
         pathway: ''
-      }
+      },
+      todos: [],
+      isAddModalActive: false
     }
   },
 
   methods: {
+    openEditModal (item) {
+      this.selectedTodo = item
+      this.isEditModalActive = true
+    },
     submit () {
       console.log('this.form.disease:: ', this.form.disease)
       let searchParam = ''
@@ -103,7 +180,7 @@ export default {
       } else {
         searchParam = this.form.disease
       }
-
+      this.words = searchParam
       axios.get('http://127.0.0.1:8000/api/articles/?search=' + searchParam).then(resp => {
         console.log('--- SUCCESS ---')
         this.fetched_items = []
@@ -176,8 +253,7 @@ hr {
   border: 1px solid #42b983;
 }
 h3 {
-  margin: 40px 0 0;
-  margin-bottom: 20px;
+  margin: 40px 0 20px;
 }
 ul {
   list-style-type: none;

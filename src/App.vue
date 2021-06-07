@@ -31,6 +31,14 @@ export default {
             icon: 'dashboard',
             updateMark: true
           }
+        ],
+        [
+          {
+            to: '/search',
+            label: 'Search',
+            icon: 'dashboard',
+            updateMark: false
+          }
         ]
       ]
     }

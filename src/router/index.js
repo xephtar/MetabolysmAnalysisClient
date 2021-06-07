@@ -39,6 +39,14 @@ const routes = [
   },
   {
     meta: {
+      title: 'Search'
+    },
+    path: '/search',
+    name: 'search',
+    component: () => import('../views/Search.vue')
+  },
+  {
+    meta: {
       title: 'Forms'
     },
     path: '/forms',
