@@ -28,6 +28,26 @@
           </a>
         </template>
       </b-table-column>
+      <b-table-column field="total_evidence" label="Total Pathway Count">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ 'Pathway' }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.total_pathway }}
+        </template>
+      </b-table-column>
+      <b-table-column field="total_evidence" label="Total Evidence Count">
+        <template v-slot:header="{ column }">
+          <b-tooltip :label="column.label" append-to-body dashed>
+            {{ 'Evidence' }}
+          </b-tooltip>
+        </template>
+        <template v-slot="props">
+          {{ props.row.total_evidence }}
+        </template>
+      </b-table-column>
 
       <template style="width: available"  slot="detail" slot-scope="props">
         <tr v-for="item in props.row.details" :key="item.pathway">

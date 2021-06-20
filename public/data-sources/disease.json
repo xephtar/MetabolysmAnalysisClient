@@ -2,6 +2,8 @@
   {
     "disease_id": 1,
     "disease": "Breast Cancer",
+    "total_evidence": 293,
+    "total_pathway": 9,
     "details": [
       {
         "pathway": "Glycolysis",
@@ -49,6 +51,8 @@
   {
     "disease_id": 2,
     "disease": "NAFLD",
+    "total_evidence": 1,
+    "total_pathway": 23,
     "details": [
       {
         "pathway": "Glycolysis",

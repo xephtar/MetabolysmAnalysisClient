@@ -2,6 +2,8 @@
   {
     "pathway_id": 1,
     "pathway": "Glycolysis",
+    "total_evidence": 9,
+    "total_disease": 16,
     "details": [
       {
         "disease": "Breast Cancer",
@@ -49,6 +51,8 @@
   {
     "pathway_id": 2,
     "pathway": "TCA Cycle",
+    "total_evidence": 49,
+    "total_disease": 4,
     "details": [
       {
         "disease": "Breast Cancer",
