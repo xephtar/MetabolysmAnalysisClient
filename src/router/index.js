@@ -28,55 +28,47 @@ const routes = [
   },
   {
     meta: {
-      title: 'Tables'
+      title: 'Articles'
     },
-    path: '/tables',
-    name: 'tables',
+    path: '/articles',
+    name: 'articles',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "tables" */ '../views/Tables.vue')
+    component: () => import(/* webpackChunkName: "tables" */ '../views/Articles.vue')
   },
   {
     meta: {
-      title: 'Search'
+      title: 'Pathways'
     },
-    path: '/search',
-    name: 'search',
-    component: () => import('../views/Search.vue')
+    path: '/pathways',
+    name: 'pathways',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "tables" */ '../views/Pathways.vue')
   },
   {
     meta: {
-      title: 'Forms'
+      title: 'Diseases'
     },
-    path: '/forms',
-    name: 'forms',
-    component: () => import(/* webpackChunkName: "forms" */ '../views/Forms.vue')
+    path: '/diseases',
+    name: 'diseases',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "tables" */ '../views/Diseases.vue')
   },
   {
     meta: {
-      title: 'Profile'
+      title: 'Metabolities'
     },
-    path: '/profile',
-    name: 'profile',
-    component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
-  },
-  {
-    meta: {
-      title: 'New Client'
-    },
-    path: '/client/new',
-    name: 'client.new',
-    component: () => import(/* webpackChunkName: "client-form" */ '../views/ClientForm.vue')
-  },
-  {
-    meta: {
-      title: 'Edit Client'
-    },
-    path: '/client/:id',
-    name: 'client.edit',
-    component: () => import(/* webpackChunkName: "client-form" */ '../views/ClientForm.vue'),
-    props: true
+    path: '/metabolities',
+    name: 'metabolities',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "tables" */ '../views/Metabolities.vue')
   }
 ]
 

@@ -48,7 +48,7 @@ export default {
   },
   data () {
     return {
-      articlesUrl: 'http://localhost:8000/api/articles/',
+      articlesUrl: 'https://meta-analysis-api.herokuapp.com/api/articles/',
       articleColumns: [
         {
           field: 'name',
@@ -69,7 +69,7 @@ export default {
   },
   computed: {
     titleStack () {
-      return ['Admin', 'Tables']
+      return ['Admin', 'Articles']
     }
   }
 }

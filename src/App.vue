@@ -26,29 +26,48 @@ export default {
         'General',
         [
           {
-            to: '/tables',
-            label: 'Analysis',
-            icon: 'dashboard',
-            updateMark: true
+            to: '/',
+            label: 'Dashboard',
+            icon: 'home'
           }
         ],
         [
           {
-            to: '/search',
-            label: 'Search',
-            icon: 'dashboard',
-            updateMark: false
+            to: '/analysis',
+            label: 'Analysis',
+            icon: 'cloud-search'
+          }
+        ],
+        [
+          {
+            to: '/articles',
+            label: 'Articles',
+            icon: 'database'
+          }
+        ],
+        [
+          {
+            to: '/pathways',
+            label: 'Pathways',
+            icon: 'database'
+          }
+        ],
+        [
+          {
+            to: '/diseases',
+            label: 'Diseases',
+            icon: 'database'
+          }
+        ],
+        [
+          {
+            to: '/metabolities',
+            label: 'Metabolities',
+            icon: 'database'
           }
         ]
       ]
     }
-  },
-  created () {
-    this.$store.commit('user', {
-      name: 'John Doe',
-      email: 'john@example.com',
-      avatar: 'https://avatars.dicebear.com/v2/gridy/John-Doe.svg'
-    })
   }
 }
 </script>

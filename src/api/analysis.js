@@ -1,6 +1,6 @@
 import httpClient from './httpClient'
 
-const END_POINT = '/articles'
+const END_POINT = 'https://meta-analysis-api.herokuapp.com/api/articles'
 
 // const getAllUsers = () => httpClient.get(END_POINT)
 

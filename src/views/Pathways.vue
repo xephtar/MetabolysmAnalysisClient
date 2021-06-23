@@ -2,7 +2,7 @@
   <div>
     <title-bar :title-stack="titleStack" />
     <hero-bar>
-      Reactions
+      Pathways
       <router-link slot="right" to="/" class="button">
         Dashboard
       </router-link>
@@ -11,19 +11,19 @@
       <notification class="is-info">
         <div>
           <b-icon icon="buffer" custom-size="default" />
-          <b>Sorted and paginated reactions.</b>
+          <b>Sorted and paginated pathways.</b>
         </div>
       </notification>
 
       <card-component
         class="has-table has-mobile-sort-spaced"
-        title="Reactions"
+        title="Pathways"
         icon="account-multiple"
       >
-        <reactions-table
-          :data-url="this.reactionsUrl"
+        <pathways-table
+          :data-url="this.pathwaysUrl"
           :checkable="true"
-          :features="this.reactionsColumn"
+          :features="this.pathwaysColumn"
         />
       </card-component>
 
@@ -33,7 +33,7 @@
 
 <script>
 import Notification from '@/components/Notification'
-import ReactionsTable from '@/components/ReactionsTable'
+import PathwaysTable from '@/components/PathwaysTable'
 import CardComponent from '@/components/CardComponent'
 import TitleBar from '@/components/TitleBar'
 import HeroBar from '@/components/HeroBar'
@@ -43,23 +43,23 @@ export default {
     HeroBar,
     TitleBar,
     CardComponent,
-    ReactionsTable,
+    PathwaysTable,
     Notification
   },
   data () {
     return {
-      reactionsUrl: 'http://localhost:8000/api/reactions/',
-      reactionsColumn: [
+      pathwaysUrl: 'https://meta-analysis-api.herokuapp.com/api/pathways/',
+      pathwaysColumn: [
         {
           field: 'name',
-          label: 'Reaction Name'
+          label: 'Pathway Name'
         }
       ]
     }
   },
   computed: {
     titleStack () {
-      return ['Admin', 'Tables']
+      return ['Admin', 'Pathways']
     }
   }
 }

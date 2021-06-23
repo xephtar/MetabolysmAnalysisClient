@@ -48,7 +48,7 @@ export default {
   },
   data () {
     return {
-      diseasesUrl: 'http://localhost:8000/api/diseases/',
+      diseasesUrl: 'https://meta-analysis-api.herokuapp.com/api/diseases/',
       diseasesColumn: [
         {
           field: 'name',
@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     titleStack () {
-      return ['Admin', 'Tables']
+      return ['Admin', 'Diseases']
     }
   }
 }

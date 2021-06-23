@@ -14,12 +14,8 @@
       :striped="true"
       :hoverable="true"
       default-sort="name"
-      :data="reactions"
+      :data="Pathways"
       :columns="this.features"
-      detailed
-      detail-key="reaction_id"
-      @details-open="(row) => $buefy.toast.open(`Expanded ${row.name}`)"
-      :show-detail-icon="showDetailIcon"
 
     >
       <section slot="empty" class="section">
@@ -38,28 +34,6 @@
           </template>
         </div>
       </section>
-      <template #detail="props">
-        <article class="media">
-            <div class="media-content">
-                <div class="content">
-                    <h3>{{ props.row.name }}</h3>
-                    <p>
-                        <strong>Detail</strong>
-                        <br>
-                        <small>Metabolities:</small>
-                        <small v-for="metabolity in props.row.metabolities" :key="metabolity">
-                          <a> {{ metabolity.name }} </a> |
-                        </small>
-                        <br>
-                        <small>Original Bigg Ids:</small>
-                        <small v-for="m_id in props.row.notes.original_bigg_ids" :key="m_id">
-                          <a> {{ m_id }} </a> |
-                        </small>
-                    </p>
-                </div>
-            </div>
-          </article>
-        </template>
     </b-table>
     <b-pagination
       v-if="!isLoading"
@@ -87,7 +61,7 @@ import axios from 'axios'
 import ModalBox from '@/components/ModalBox'
 
 export default {
-  name: 'ReactionsTable',
+  name: 'PathwaysTable',
   components: { ModalBox },
   props: {
     dataUrl: {
@@ -118,7 +92,7 @@ export default {
       nextIcon: 'chevron-right',
       isModalActive: false,
       trashObject: null,
-      reactions: [],
+      Pathways: [],
       isLoading: false,
       paginated: false,
       checkedRows: [],
@@ -146,7 +120,7 @@ export default {
               this.total = r.data.count
               this.paginated = true
             }
-            this.reactions = r.data.results
+            this.Pathways = r.data.results
           }
         })
         .catch((e) => {
@@ -170,7 +144,7 @@ export default {
               this.total = r.data.count
               this.paginated = true
             }
-            this.reactions = r.data.results
+            this.Pathways = r.data.results
           }
         })
         .catch((e) => {
