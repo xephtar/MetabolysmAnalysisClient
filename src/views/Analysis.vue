@@ -75,7 +75,7 @@
                 <strong>Group by Disease</strong>
               </div>
             </template>
-            <div class="panel-block">
+            <div>
               <DiseaseRowGrid/>
             </div>
           </b-collapse>
@@ -92,7 +92,7 @@
                 <strong>Group by Pathway</strong>
               </div>
             </template>
-            <div class="panel-block">
+            <div>
               <PathwayRowGrid />
             </div>
           </b-collapse>

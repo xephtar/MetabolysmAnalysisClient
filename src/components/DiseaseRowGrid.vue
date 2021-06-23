@@ -5,8 +5,6 @@
 
       :data="data"
       ref="table"
-      paginated
-      per-page="5"
       :opened-detailed="defaultOpenedDetails"
       detailed
       detail-key="disease_id"

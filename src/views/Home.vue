@@ -31,8 +31,8 @@
           class="tile is-child"
           type="is-info"
           icon="test-tube"
-          :number="this.reactionsCount"
-          label="Reactions"
+          :number="this.pathwaysCount"
+          label="Pathways"
         />
       </tiles>
       <b-loading :is-full-page="true" v-model="isLoading"></b-loading>
@@ -85,12 +85,12 @@ export default {
       },
       articlesUrl: 'https://meta-analysis-api.herokuapp.com/api/articles/',
       articlesCount: 0,
-      metabolitiesUrl: 'https://meta-analysis-api.herokuapp.com/api/pathways/',
+      metabolitiesUrl: 'https://meta-analysis-api.herokuapp.com/api/metabolities/',
       metabolitiesCount: 0,
       diseasesUrl: 'https://meta-analysis-api.herokuapp.com/api/diseases/',
       diseasesCount: 0,
-      reactionsUrl: 'https://meta-analysis-api.herokuapp.com/api/reactions/',
-      reactionsCount: 0,
+      pathwaysUrl: 'https://meta-analysis-api.herokuapp.com/api/pathways/',
+      pathwaysCount: 0,
       isLoading: true
     }
   },
@@ -110,8 +110,8 @@ export default {
     await axios.get(this.diseasesUrl).then((response) => {
       this.diseasesCount = response.data.count
     })
-    await axios.get(this.reactionsUrl).then((response) => {
-      this.reactionsCount = response.data.count
+    await axios.get(this.pathwaysUrl).then((response) => {
+      this.pathwaysCount = response.data.count
     })
     this.isLoading = false
     this.fillChartData()
