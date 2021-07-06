@@ -14,7 +14,7 @@
     >
       <div class="navbar-end">
         <a
-          href="https://justboil.me/bulma-admin-template/one"
+          href="https://www.itu.edu.tr/"
           class="navbar-item has-divider"
           title="About"
         >

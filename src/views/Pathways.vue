@@ -48,7 +48,7 @@ export default {
   },
   data () {
     return {
-      pathwaysUrl: 'https://meta-analysis-api.herokuapp.com/api/pathways/',
+      pathwaysUrl: 'http://localhost:8000/api/pathways/',
       pathwaysColumn: [
         {
           field: 'name',
@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     titleStack () {
-      return ['Admin', 'Pathways']
+      return ['Association Tool', 'Pathways']
     }
   }
 }

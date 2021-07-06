@@ -18,7 +18,7 @@
           type="is-info"
           icon="bacteria"
           :number="this.metabolitiesCount"
-          label="Pathways"
+          label="Metabolities"
         />
         <card-widget
           class="tile is-child"
@@ -83,20 +83,20 @@ export default {
         chartData: null,
         extraOptions: chartConfig.chartOptionsMain
       },
-      articlesUrl: 'https://meta-analysis-api.herokuapp.com/api/articles/',
+      articlesUrl: 'http://localhost:8000/api/articles/',
       articlesCount: 0,
-      metabolitiesUrl: 'https://meta-analysis-api.herokuapp.com/api/metabolities/',
+      metabolitiesUrl: 'http://localhost:8000/api/metabolities/',
       metabolitiesCount: 0,
-      diseasesUrl: 'https://meta-analysis-api.herokuapp.com/api/diseases/',
+      diseasesUrl: 'http://localhost:8000/api/diseases/',
       diseasesCount: 0,
-      pathwaysUrl: 'https://meta-analysis-api.herokuapp.com/api/pathways/',
+      pathwaysUrl: 'http://localhost:8000/api/pathways/',
       pathwaysCount: 0,
       isLoading: true
     }
   },
   computed: {
     titleStack () {
-      return ['Admin', 'Dashboard']
+      return ['Association Tool', 'Dashboard']
     }
   },
   async mounted () {

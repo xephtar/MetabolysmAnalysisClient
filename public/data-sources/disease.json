@@ -34,16 +34,6 @@
           "unknown": 22
         },
         "evidence": 10
-      },
-      {
-        "pathway": "Urea Cycle",
-        "score": 0.20,
-        "activity_change": {
-          "increase": 25,
-          "decrease": 20,
-          "unknown": 22
-        },
-        "evidence": 3
       }
     ]
   },
@@ -83,16 +73,6 @@
           "unknown": 22
         },
         "evidence": 10
-      },
-      {
-        "pathway": "Urea Cycle",
-        "score": 0.20,
-        "activity_change":{
-          "increase":25,
-          "decrease":20,
-          "unknown": 22
-        },
-        "evidence": 3
       }
     ]
   }

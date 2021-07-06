@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     titleStack () {
-      return ['Admin', 'Analysis']
+      return ['Association Tool', 'Analysis']
     }
   }
 }

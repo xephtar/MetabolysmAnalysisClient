@@ -48,7 +48,7 @@ export default {
   },
   data () {
     return {
-      metabolitiesUrl: 'https://meta-analysis-api.herokuapp.com/api/metabolities/',
+      metabolitiesUrl: 'http://localhost:8000/api/metabolities/',
       metabolitiesColumn: [
         {
           field: 'name',
@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     titleStack () {
-      return ['Admin', 'Metabolities']
+      return ['Association Tool', 'Metabolities']
     }
   }
 }
